@@ -5,9 +5,11 @@ import { BarChart3, Database, TrendingUp } from 'lucide-react';
 interface StatsCardsProps {
   totalAnalyses: number;
   averageConfidence: number;
+  realCount: number;
+  fakeCount: number;
 }
 
-const StatsCards: React.FC<StatsCardsProps> = ({ totalAnalyses, averageConfidence }) => {
+const StatsCards: React.FC<StatsCardsProps> = ({ totalAnalyses, averageConfidence, realCount, fakeCount }) => {
   const stats = [
     {
       label: 'Total Analyses',
@@ -17,18 +19,18 @@ const StatsCards: React.FC<StatsCardsProps> = ({ totalAnalyses, averageConfidenc
       bg: 'bg-blue-400/10'
     },
     {
-      label: 'Avg. Confidence',
-      value: `${averageConfidence.toFixed(2)}%`,
-      icon: TrendingUp,
-      color: 'text-emerald-400',
-      bg: 'bg-emerald-400/10'
-    },
-    {
-      label: 'Detection Rate',
-      value: '98.2%',
+      label: 'Real / Fake',
+      value: `${realCount} / ${fakeCount}`,
       icon: BarChart3,
       color: 'text-purple-400',
       bg: 'bg-purple-400/10'
+    },
+    {
+      label: 'Avg. Confidence',
+      value: `${averageConfidence.toFixed(1)}%`,
+      icon: TrendingUp,
+      color: 'text-emerald-400',
+      bg: 'bg-emerald-400/10'
     }
   ];
 
